@@ -24,6 +24,10 @@ Page({
         userInfo:userInfo
       })
     });
+    //添加转发按钮
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     wx.getLocation({//获取当前经纬度
       type: 'wgs84',
       success: function (res) {

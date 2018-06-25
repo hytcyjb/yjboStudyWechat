@@ -18,6 +18,8 @@
 
 .usermotto {
   margin-top: 200px;
+  margin-left: 10px;
+  padding-left: 10rpx;
 }
 
 .marginTop10 {

@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <text bindtap="bindViewMap" class="user-motto;marginTop10;" >纬度：{{location_res.latitude}},经度：{{location_res.longitude}},
+  速度：{{location_res.speed}} m/s,海拔{{location_res.altitude}}米,
+  位置：{{location_res.name}}，详细地址：{{location_res.address}}</text>
+  
+  <view class="usermotto">
+    <text class="user-motto;align-items: center;">知识积累，知识共享，知识沉淀</text>
+  </view>
+  <text class="user-motto;align-items: center;" style='margin-top:10px;font-size:12sp'>@hytcyjb</text>
+</view>

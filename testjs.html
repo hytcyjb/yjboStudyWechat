@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试h5和Android的交互</title>
+</head>
+<body style="padding: 50px">
+<script type="text/javascript">
+    window.onload = function () {
+        var btn11 = document.getElementById("btn1");
+        var btn21 = document.getElementById("btn2");
+        var btn31 = document.getElementById("btn3");
+
+        btn11.onclick = function () {
+            if((typeof local_obj) != 'undefined') {
+                local_obj.goback("1");
+            } else {
+                alert("调用android方法失败，因为android没有注册local_obj事件")
+            }
+        }
+        btn21.onclick = function () {
+            if((typeof local_obj) != 'undefined') {
+                local_obj.goback("2");
+            } else {
+                alert("调用android方法失败，因为android没有注册local_obj事件")
+            }
+        }
+        btn31.onclick = function () {
+            if((typeof local_obj) != 'undefined') {
+                local_obj.goback("3");
+            } else {
+                alert("调用android方法失败，因为android没有注册local_obj事件")
+            }
+        }
+    }
+</script>
+<p><button id="btn1" style="font-size: 40px;">点我调用android的方法1</button></p><br>
+<p> <button id="btn2" style="font-size: 40px;">点我调用android的方法2</button></p><br>
+<p> <button id="btn3" style="font-size: 40px;">点我调用android的方法3</button></p><br>
+</body>
+</html>

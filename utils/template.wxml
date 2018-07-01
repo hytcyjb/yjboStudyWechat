@@ -1,0 +1,64 @@
+<!-- template.wxml -->
+<template name="courseStudent">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="recommend">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="joy-text">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <!-- <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line'></view>
+  </view> -->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="joy-pic">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="joy-video">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了  bimageuri-->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <video src='{{videouri}}' loop='true'></video>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="joy-gif">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>

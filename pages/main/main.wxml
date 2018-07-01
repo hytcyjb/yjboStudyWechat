@@ -1,18 +1,47 @@
 <!-- main.wxml -->
-<view class="container main-page">
-  <button bindtap="bindrefresh">刷新页面</button>
-  <view class='listview' wx:for="{{resultdata}}" wx:for-item="item" wx:key="*this">
-    <text class="item">{{index}}. {{item.text}}</text>
-    <view class='split-line-text'></view>
-    <image src='{{item.image0}}'></image>
-    <!-- <view class='flex-wrp imageall'>
-      <image src='{{item.image0}}'></image>
-      <image src='{{item.image1}}'></image>
-      <image src='{{item.image2}}'></image>
-      <image src='{{item.image3}}'></image>
-      <image src='{{item.cdn_img}}'></image>
-      <image src='{{item.profile_image}}'></image>
-    </view> -->
-    <view class='split-line'></view>
-  </view>
+<import src="../../utils/template.wxml" />
+<view class="swiper-tab">
+  <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">推荐</view>
+  <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">纯文字</view>
+  <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">图片</view>
+  <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">视频</view>
 </view>
+
+<swiper current="{{currentTab}}" class="swiper" duration="300" style="height:{{winHeight}}px" bindchange="bindChange">
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px">
+      <view class='listview' wx:for="{{resultdata}}" wx:for-item="item" wx:key="*this">
+      <view bindtap="bindViewTap" data-item='{{item}}'>
+         <template  is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'recommend'))}}" data="{{...item}}"></template>
+      </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+   <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px">
+      <view class='listview' wx:for="{{resultdata1}}" wx:for-item="item" wx:key="*this">
+      <view bindtap="bindViewTap" data-item='{{item}}'>
+        <template  is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'recommend'))}}" data="{{...item}}"></template>
+      </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px">
+      <view class='listview' wx:for="{{resultdata2}}" wx:for-item="item" wx:key="*this">
+      <view bindtap="bindViewTap" data-item='{{item}}'>
+         <template  is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'recommend'))}}" data="{{...item}}"></template>
+      </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px">
+      <view class='listview' wx:for="{{resultdata3}}" wx:for-item="item" wx:key="*this">
+      <view bindtap="bindViewTap" data-item='{{item}}'>
+        <template  is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'recommend'))}}" data="{{...item}}"></template>
+      </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

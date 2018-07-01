@@ -2,7 +2,8 @@
   "pages": [
     "pages/main/main",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,7 +13,7 @@
   },
   "tabBar": {
     "color": "#ccc",
-    "selectedColor": "#35495e",
+    "selectedColor": "#00FF00",
     "borderStyle": "white",
     "backgroundColor": "#f9f9f9",
     "list": [

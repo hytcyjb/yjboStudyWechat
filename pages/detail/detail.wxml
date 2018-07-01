@@ -1,0 +1,6 @@
+<!--detail.wxml-->
+<import src="../../utils/template.wxml" />
+<view class="container listview">
+   <template  is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'recommend'))}}" 
+          data="{{...item}}"></template>
+</view>

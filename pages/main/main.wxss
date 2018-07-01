@@ -1,0 +1,29 @@
+/* main.wxss */
+.main-page{
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+}
+.listview {
+}
+.item{
+  width: 100%;
+  justify-content: left;
+  text-align: left;
+  font-size: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.imageall{
+  flex-direction:column;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.flex-wrp {display: flex;}
+.split-line{
+  background: #f9f9f9;
+  height: 40rpx;
+}
+.split-line-text{
+  height: 20rpx;
+}

@@ -1,0 +1,18 @@
+<!-- main.wxml -->
+<view class="container main-page">
+  <button bindtap="bindrefresh">刷新页面</button>
+  <view class='listview' wx:for="{{resultdata}}" wx:for-item="item" wx:key="*this">
+    <text class="item">{{index}}. {{item.text}}</text>
+    <view class='split-line-text'></view>
+    <image src='{{item.image0}}'></image>
+    <!-- <view class='flex-wrp imageall'>
+      <image src='{{item.image0}}'></image>
+      <image src='{{item.image1}}'></image>
+      <image src='{{item.image2}}'></image>
+      <image src='{{item.image3}}'></image>
+      <image src='{{item.cdn_img}}'></image>
+      <image src='{{item.profile_image}}'></image>
+    </view> -->
+    <view class='split-line'></view>
+  </view>
+</view>

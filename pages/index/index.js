@@ -5,11 +5,11 @@ Page({
   data: {
     motto: '知识积累，知识共享，知识沉淀，知识爆发',
     userInfo: {},
-    location_res:{},
+    location_res: {},
     locationMap: {}
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -18,10 +18,10 @@ Page({
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
+    app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo:userInfo
+        userInfo: userInfo
       })
     });
     //添加转发按钮
@@ -33,12 +33,12 @@ Page({
       success: function (res) {
         that.setData({
           // location_res:res
-          location_res:{
-            latitude : res.latitude,
-            longitude : res.longitude,
-            speed : res.speed,
-            altitude : res.altitude,
-            name:"请选择",
+          location_res: {
+            latitude: res.latitude,
+            longitude: res.longitude,
+            speed: res.speed,
+            altitude: res.altitude,
+            name: "请选择",
             address: "请选择"
           }
         })
@@ -76,11 +76,11 @@ Page({
     //   success: function (res) {
     //     var latitude = res.latitude
     //     var longitude = res.longitude
-        wx.openLocation({
-          latitude: this.data.location_res.latitude,
-          longitude: this.data.location_res.longitude,
-          scale: 28,
-        })
+    wx.openLocation({
+      latitude: this.data.location_res.latitude,
+      longitude: this.data.location_res.longitude,
+      scale: 28,
+    })
     //   }
     // })
   },

@@ -6,7 +6,7 @@
 }
 
 .listview {
-  background: #f5d;
+  /* background: #f5d; */
   padding-top: 10rpx;
   padding-bottom: 10rpx;
 }
@@ -31,7 +31,7 @@
 }
 
 .split-line {
-  background: #f9f9f9;
+  background: #CCCCCC ;
   height: 10px;
 }
 

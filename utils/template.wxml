@@ -1,17 +1,12 @@
 <!-- template.wxml -->
-<template name="courseStudent">
-  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
-  <view>
-    <text class="item">{{index}} {{text}}</text>
-    <view class='split-line-text'></view>
-    <image src='{{image0}}'></image>
-    <view class='split-line'></view>
-  </view>
-</template>
-
 <template name="recommend">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
   <view>
+   <view>
+     <!-- <image  mode="aspectFill" style='height=30px,width=30px' src='{{profile_image}}' ></image> -->
+     <text>{{name}}</text>
+     <text style='background-color: #ff5;'>推荐</text>
+   </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
     <image src='{{image0}}'></image>
@@ -21,14 +16,15 @@
 
 <template name="joy-text">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
-  <!-- <view>
-    <text class="item">{{index}} {{text}}</text>
-    <view class='split-line'></view>
-  </view> -->
   <view>
+   <view>
+     <!-- <image style='height=10px,width=10px' mode="aspectFill" src='{{profile_image}}'  ></image> -->
+     <text>{{name}}</text>
+     <text style='background-color: #ff5;'>文本</text>
+   </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <image src='{{image0}}'></image>
+    <image src='{{image0}}' hidden='true'></image>
     <view class='split-line'></view>
   </view>
 </template>
@@ -36,9 +32,14 @@
 <template name="joy-pic">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
   <view>
+   <view>
+     <!-- <image style='height=10px,width=10px' mode="aspectFill" src='{{profile_image}}' ></image> -->
+     <text>{{name}}</text>
+     <text style='background-color: #ff5;'>图片</text>
+   </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <image src='{{image0}}'></image>
+    <image  bindtap='previewImg' mode="aspectFill" style='height=200px,width=100%,background-color: #eeeeee;' src='{{image0}}' ></image>
     <view class='split-line'></view>
   </view>
 </template>
@@ -46,19 +47,15 @@
 <template name="joy-video">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了  bimageuri-->
   <view>
+   <view>
+     <!-- <image  mode="aspectFill" style='height=30px,width=30px' src='{{profile_image}}' ></image> -->
+     <text>{{name}}</text>
+     <text style='background-color: #ff5;'>视频</text>
+   </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <video src='{{videouri}}' loop='true'></video>
-    <view class='split-line'></view>
-  </view>
-</template>
-
-<template name="joy-gif">
-  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
-  <view>
-    <text class="item">{{index}} {{text}}</text>
-    <view class='split-line-text'></view>
-    <image src='{{image0}}'></image>
+     <image  bindtap='previewImg' mode="aspectFill" style='height=200px,width=100%,background-color: #eeeeee;' src='{{image0}}' ></image>
+    <!-- <video src='{{videouri}}' loop='true'></video> -->
     <view class='split-line'></view>
   </view>
 </template>

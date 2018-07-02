@@ -12,6 +12,10 @@ Page({
     resultdata1: [],
     resultdata2: [],
     resultdata3: [],
+    pageNum : 1,
+    pageNum1 : 1,
+    pageNum2 : 1,
+    pageNum3 : 1,
     currentTab: 0
   },
   // onPullDownRefresh: function () {
@@ -24,7 +28,7 @@ Page({
   //事件处理函数
   bindrefresh: function() {
     var that = this;
-    this.refreshData(that,that.data.currentTab+1);
+    this.refreshData(that,that.data.currentTab+1,1);
   },
 
   /**
@@ -55,16 +59,20 @@ Page({
       }
     });
 
-    this.refreshData(that,1);
+    this.refreshData(that,1,1);
   },
   /**
    * 请求网络数据
    */
-  refreshData: function(that, type) {
+  refreshData: function(that, type,pageNu) {
+    let pageN = 1;
+    if (pageNu){
+      pageN = pageNu;
+    }
     wx.showLoading({
       title: '加载中',
     })
-    console.log("当前请求的url：" + 'https://www.apiopen.top/satinApi?type=' + type + '&page=1')
+    console.log("当前请求的url：" + 'https://www.apiopen.top/satinApi?type=' + type + '&page=' + pageN)
     wx.request({
       url: 'https://www.apiopen.top/satinApi?type=' + type + '&page=1',
       data: {
@@ -82,25 +90,70 @@ Page({
         console.log(res.data);
         if (res.data.code == 200) {
           var height = 100;
+          var dataNew = res.data.data;
           if (type == 1) {
+            var dataOld = that.data.resultdata;
+            if (dataOld && dataOld.length > 0) {
+              if (pageN == 1) {//刷新时数据加原始数据上面
+                dataNew.push.apply(dataNew, dataOld);
+                dataOld = dataNew;
+              } else {//加载更多时数据加新数据上面
+                dataOld.push.apply(dataOld, dataNew);
+              }
+            }else{
+              dataOld = dataNew;
+            }
             that.setData({
-              resultdata: res.data.data,
-              winHeight: res.data.data.length * height
+              resultdata: dataOld,
+              // winHeight: res.data.data.length * height
             });
           } else if (type == 2) {
+            var dataOld = that.data.resultdata1;
+            if (dataOld && dataOld.length > 0) {
+              if (pageN == 1) {//刷新时数据加原始数据上面
+                dataNew.push.apply(dataNew, dataOld);
+                dataOld = dataNew;
+              } else {//加载更多时数据加新数据上面
+                dataOld.push.apply(dataOld, dataNew);
+              }
+            } else {
+              dataOld = dataNew;
+            }
             that.setData({
-              resultdata1: res.data.data,
-              winHeight: res.data.data.length * height
+              resultdata1: dataOld,
+              // winHeight: res.data.data.length * height
             });
           } else if (type == 3) {
+            var dataOld = that.data.resultdata2;
+            if (dataOld && dataOld.length > 0) {
+              if (pageN == 1) {//刷新时数据加原始数据上面
+                dataNew.push.apply(dataNew, dataOld);
+                dataOld = dataNew;
+              } else {//加载更多时数据加新数据上面
+                dataOld.push.apply(dataOld, dataNew);
+              }
+            } else {
+              dataOld = dataNew;
+            }
             that.setData({
-              resultdata2: res.data.data,
-              winHeight: res.data.data.length * height
+              resultdata2: dataOld,
+              // winHeight: res.data.data.length * height
             });
           } else if (type == 4) {
+            var dataOld = that.data.resultdata3;
+            if (dataOld && dataOld.length > 0) {
+              if (pageN == 1) {//刷新时数据加原始数据上面
+                dataNew.push.apply(dataNew, dataOld);
+                dataOld = dataNew;
+              } else {//加载更多时数据加新数据上面
+                dataOld.push.apply(dataOld, dataNew);
+              }
+            } else {
+              dataOld = dataNew;
+            }
             that.setData({
-              resultdata3: res.data.data,
-              winHeight: res.data.data.length * height
+              resultdata3: dataOld,
+              // winHeight: res.data.data.length * height
             });
           }
 
@@ -117,6 +170,11 @@ Page({
   },
   bindViewTap: function (event){
     // console.log("nihao////" + event.currentTarget.dataset.item)
+    var item = event.currentTarget.dataset.item;
+    if(item.type == "10"){
+      templates.previewImg(event);
+      return;
+    }
     wx.navigateTo({
       url: '../detail/detail?jsonStr=' + JSON.stringify(event.currentTarget.dataset.item),
       success: function (res) {
@@ -183,7 +241,7 @@ Page({
           return;
         }
       } 
-      this.refreshData(that, pageNo+1);
+      this.refreshData(that, pageNo+1,1);
     }
   },
   /**
@@ -227,7 +285,30 @@ Page({
   onReachBottom: function() {
 
   },
-
+  bindDownLoad: function () {
+    //  该方法绑定了页面滑动到底部的事件  
+    var that = this;
+    var nowPage = that.data.currentTab;
+    var type = nowPage + 1;
+    var pageN = 1;
+    if (type == 1) {
+      pageN = that.data.pageNum;
+    } else if (type == 2) {
+      pageN = that.data.pageNum1;
+    } else if (type == 3) {
+      pageN = that.data.pageNum2;
+    } else if (type == 4) {
+      pageN = that.data.pageNum3;
+    }
+    
+    that.refreshData(that, nowPage + 1, pageN+1);
+  },
+  refresh: function (event) {
+    //  该方法绑定了页面滑动到顶部的事件，然后做上拉刷新  
+    var that = this;
+    var nowPage = that.data.currentTab;
+    that.refreshData(that, nowPage + 1, 1);
+  }, 
   /**
    * 用户点击右上角分享
    */

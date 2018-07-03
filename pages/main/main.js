@@ -176,26 +176,31 @@ Page({
       return;
     } else if (item.type == "29") {
       // templates.bindCollect(event);
-      var itemArr  = [];
+      var itemArr = [];
+      var collectFlag = ""; //"":默认状态；"1":收藏成功状态；"0":取消收藏成功状态；
       try {
         var value = wx.getStorageSync('collects');
         if (value) {
           // Do something with return value
-           itemArr = JSON.parse(value);
+          itemArr = JSON.parse(value);
           if (itemArr && itemArr.length > 0) {
-            for(var i =0;i<itemArr.length;i++){
+            for (var i = 0; i < itemArr.length; i++) {
               var itemOne = itemArr[i];
-              if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)){
-                // 取消收藏。暂不考虑
+              if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+                // 取消收藏。
+                itemArr.splice(i,1);
+                collectFlag = "0";
                 break;
               }
-              if(i == itemArr.length-1){
-                itemArr.push(item);
+              if (i == itemArr.length - 1) {
+                itemArr.unshift(item);//向数组插入一个元素成为第一个元素
+                collectFlag = "1";
                 break;
               }
             }
-          }else{
-            itemArr.push(item);
+          } else {
+            itemArr.unshiftpush(item);
+            collectFlag = "1";
           }
         }
       } catch (e) {
@@ -205,24 +210,32 @@ Page({
           icon: 'fail'
         })
       }
-
-      wx.setStorage({
-        key: "collects",//以用户id和用户创建该数据的时间作为唯一的key
-        data: JSON.stringify( itemArr),
-        success: function() {
-          wx.showToast({
-            title: '收藏成功',
-            icon: 'success'
-          })
-        },
-        fail: function() {
-          wx.showToast({
-            title: '收藏失败',
-            icon: 'fail'
-          })
-        }
-      })
-      return;
+      if (collectFlag != "") {
+        wx.setStorage({
+          key: "collects", //以用户id和用户创建该数据的时间作为唯一的key
+          data: JSON.stringify(itemArr),
+          success: function() {
+            if (collectFlag == "0") {
+              wx.showToast({
+                title: '取消收藏成功',
+                icon: 'success'
+              })
+            } else if (collectFlag == "1") {
+              wx.showToast({
+                title: '收藏成功',
+                icon: 'success'
+              })
+            }
+          },
+          fail: function() {
+            wx.showToast({
+              title: '收藏失败',
+              icon: 'fail'
+            })
+          }
+        })
+        return;
+      }
     }
     wx.navigateTo({
       url: '../detail/detail?jsonStr=' + JSON.stringify(event.currentTarget.dataset.item),

@@ -14,7 +14,16 @@ Page({
         console.log(res.limitSize) //限制的空间大小，单位kb
       }
     })
+  },
+   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  console.log("我显示了")
+  this.requesLocalData();
+  },
 
+  requesLocalData:function(){
     var list = [];
     // var itemOne = {};
     try {
@@ -40,3 +49,4 @@ Page({
     })
   }
 })
+

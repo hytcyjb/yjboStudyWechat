@@ -2,14 +2,24 @@
 <template name="recommend">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
   <view>
-   <view>
-     <!-- <image  mode="aspectFill" style='height=30px,width=30px' src='{{profile_image}}' ></image> -->
-     <text>{{name}}</text>
-     <text style='background-color: #ff5;'>推荐</text>
-   </view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/text.png"></image>
+      </view>
+      <image style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <image src='{{image0}}'></image>
+    <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}'></image>
     <view class='split-line'></view>
   </view>
 </template>
@@ -17,14 +27,24 @@
 <template name="joy-text">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
   <view>
-   <view>
-     <!-- <image style='height=10px,width=10px' mode="aspectFill" src='{{profile_image}}'  ></image> -->
-     <text>{{name}}</text>
-     <text style='background-color: #ff5;'>文本</text>
-   </view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/text.png"></image>
+      </view>
+      <image bindtap="bindCollect" style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <image src='{{image0}}' hidden='true'></image>
+    <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}' hidden='true'></image>
     <view class='split-line'></view>
   </view>
 </template>
@@ -32,14 +52,24 @@
 <template name="joy-pic">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
   <view>
-   <view>
-     <!-- <image style='height=10px,width=10px' mode="aspectFill" src='{{profile_image}}' ></image> -->
-     <text>{{name}}</text>
-     <text style='background-color: #ff5;'>图片</text>
-   </view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/pic.png"></image>
+      </view>
+      <image style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-    <image  bindtap='previewImg' mode="aspectFill" style='height=200px,width=100%,background-color: #eeeeee;' src='{{image0}}' ></image>
+    <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}'></image>
     <view class='split-line'></view>
   </view>
 </template>
@@ -47,15 +77,77 @@
 <template name="joy-video">
   <!-- 此处渲染数据的时候就不需要使用 item.xxx了  bimageuri-->
   <view>
-   <view>
-     <!-- <image  mode="aspectFill" style='height=30px,width=30px' src='{{profile_image}}' ></image> -->
-     <text>{{name}}</text>
-     <text style='background-color: #ff5;'>视频</text>
-   </view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/video.png"></image>
+      </view>
+      <image style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
     <text class="item">{{index}} {{text}}</text>
     <view class='split-line-text'></view>
-     <image  bindtap='previewImg' mode="aspectFill" style='height=200px,width=100%,background-color: #eeeeee;' src='{{image0}}' ></image>
-    <!-- <video src='{{videouri}}' loop='true'></video> -->
+    <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}'></image>
     <view class='split-line'></view>
+    <!-- <image style='width: 20px; height: 20px;  float: top; padding-right:15px;' src="../../pic/video_flag.png"></image> -->
+  </view>
+</template>
+
+<template name="joy-pic">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了-->
+  <view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/pic.png"></image>
+      </view>
+      <image style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}'></image>
+    <view class='split-line'></view>
+  </view>
+</template>
+
+<template name="joy-video_detail">
+  <!-- 此处渲染数据的时候就不需要使用 item.xxx了  bimageuri-->
+  <view>
+    <view style='flex-direction:row; align-items:center;display:flex;flex:1;padding-left:10px;'>
+      <view style='flex-direction:row; align-items:center;display:flex;flex:1;'>
+        <image style="width: 40px; height: 40px; background-color: #eeeeee;" src="{{profile_image}}"></image>
+        <view style='flex-direction:column; margin-left:10px;'>
+          <view>
+            <text style='color:#000;font-size: 14px;'>{{name}}</text>
+          </view>
+          <view>
+            <text style='color:#999;font-size: 12px;'>{{passtime}}</text>
+          </view>
+        </view>
+        <image style='width: 30px; height: 30px; margin-left:10px;' src="../../pic/video.png"></image>
+      </view>
+      <image style='width: 20px; height: 20px;  float: right; padding-right:15px;' src="../../pic/nocollect.png"></image>
+    </view>
+    <text class="item">{{index}} {{text}}</text>
+    <view class='split-line-text'></view>
+    <!-- <image bindtap='previewImg' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;' src='{{image0}}'></image> -->
+    <video style='height:200px,width:100%,background-color: #eeeeee;' src='{{videouri}}' loop='true'></video>
+    <view class='split-line'></view>
+    <!-- <image style='width: 20px; height: 20px;  float: top; padding-right:15px;' src="../../pic/video_flag.png"></image> -->
   </view>
 </template>

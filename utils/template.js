@@ -3,6 +3,9 @@ var temp = {
   onclick: function (event) {
     console.log("点击了" + event.currentTarget.dataset.item)
   },
+  bindCollect: function (event) {
+    console.log("点击了1111" + event.currentTarget.dataset.item)
+  },
   previewImg: function (e) {
     var item = e.currentTarget.dataset.item;
     console.log(item.image0);

@@ -3,7 +3,8 @@
     "pages/main/main",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,7 +26,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/my/my",
         "iconPath": "pic/wechat.png",
         "selectedIconPath": "pic/wechatHL.png"
       }

@@ -12,10 +12,10 @@ Page({
     resultdata1: [],
     resultdata2: [],
     resultdata3: [],
-    pageNum : 1,
-    pageNum1 : 1,
-    pageNum2 : 1,
-    pageNum3 : 1,
+    pageNum: 1,
+    pageNum1: 1,
+    pageNum2: 1,
+    pageNum3: 1,
     currentTab: 0
   },
   // onPullDownRefresh: function () {
@@ -28,7 +28,7 @@ Page({
   //事件处理函数
   bindrefresh: function() {
     var that = this;
-    this.refreshData(that,that.data.currentTab+1,1);
+    this.refreshData(that, that.data.currentTab + 1, 1);
   },
 
   /**
@@ -51,7 +51,7 @@ Page({
      */
     wx.getSystemInfo({
       success: function(res) {
-        console.log("屏幕的高和宽：" + res.windowHeight + "===" + res.windowWidth,)
+        console.log("屏幕的高和宽：" + res.windowHeight + "===" + res.windowWidth, )
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
@@ -59,14 +59,14 @@ Page({
       }
     });
 
-    this.refreshData(that,1,1);
+    this.refreshData(that, 1, 1);
   },
   /**
    * 请求网络数据
    */
-  refreshData: function(that, type,pageNu) {
+  refreshData: function(that, type, pageNu) {
     let pageN = 1;
-    if (pageNu){
+    if (pageNu) {
       pageN = pageNu;
     }
     wx.showLoading({
@@ -94,13 +94,13 @@ Page({
           if (type == 1) {
             var dataOld = that.data.resultdata;
             if (dataOld && dataOld.length > 0) {
-              if (pageN == 1) {//刷新时数据加原始数据上面
+              if (pageN == 1) { //刷新时数据加原始数据上面
                 dataNew.push.apply(dataNew, dataOld);
                 dataOld = dataNew;
-              } else {//加载更多时数据加新数据上面
+              } else { //加载更多时数据加新数据上面
                 dataOld.push.apply(dataOld, dataNew);
               }
-            }else{
+            } else {
               dataOld = dataNew;
             }
             that.setData({
@@ -110,10 +110,10 @@ Page({
           } else if (type == 2) {
             var dataOld = that.data.resultdata1;
             if (dataOld && dataOld.length > 0) {
-              if (pageN == 1) {//刷新时数据加原始数据上面
+              if (pageN == 1) { //刷新时数据加原始数据上面
                 dataNew.push.apply(dataNew, dataOld);
                 dataOld = dataNew;
-              } else {//加载更多时数据加新数据上面
+              } else { //加载更多时数据加新数据上面
                 dataOld.push.apply(dataOld, dataNew);
               }
             } else {
@@ -126,10 +126,10 @@ Page({
           } else if (type == 3) {
             var dataOld = that.data.resultdata2;
             if (dataOld && dataOld.length > 0) {
-              if (pageN == 1) {//刷新时数据加原始数据上面
+              if (pageN == 1) { //刷新时数据加原始数据上面
                 dataNew.push.apply(dataNew, dataOld);
                 dataOld = dataNew;
-              } else {//加载更多时数据加新数据上面
+              } else { //加载更多时数据加新数据上面
                 dataOld.push.apply(dataOld, dataNew);
               }
             } else {
@@ -142,10 +142,10 @@ Page({
           } else if (type == 4) {
             var dataOld = that.data.resultdata3;
             if (dataOld && dataOld.length > 0) {
-              if (pageN == 1) {//刷新时数据加原始数据上面
+              if (pageN == 1) { //刷新时数据加原始数据上面
                 dataNew.push.apply(dataNew, dataOld);
                 dataOld = dataNew;
-              } else {//加载更多时数据加新数据上面
+              } else { //加载更多时数据加新数据上面
                 dataOld.push.apply(dataOld, dataNew);
               }
             } else {
@@ -168,24 +168,73 @@ Page({
 
     });
   },
-  bindViewTap: function (event){
+  bindViewTap: function(event) {
     // console.log("nihao////" + event.currentTarget.dataset.item)
     var item = event.currentTarget.dataset.item;
-    if(item.type == "10"){
+    if (item.type == "10") {
       templates.previewImg(event);
+      return;
+    } else if (item.type == "29") {
+      // templates.bindCollect(event);
+      var itemArr  = [];
+      try {
+        var value = wx.getStorageSync('collects');
+        if (value) {
+          // Do something with return value
+           itemArr = JSON.parse(value);
+          if (itemArr && itemArr.length > 0) {
+            for(var i =0;i<itemArr.length;i++){
+              var itemOne = itemArr[i];
+              if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)){
+                // 取消收藏。暂不考虑
+                break;
+              }
+              if(i == itemArr.length-1){
+                itemArr.push(item);
+                break;
+              }
+            }
+          }else{
+            itemArr.push(item);
+          }
+        }
+      } catch (e) {
+        // Do something when catch error
+        wx.showToast({
+          title: '获取缓存数据出错',
+          icon: 'fail'
+        })
+      }
+
+      wx.setStorage({
+        key: "collects",//以用户id和用户创建该数据的时间作为唯一的key
+        data: JSON.stringify( itemArr),
+        success: function() {
+          wx.showToast({
+            title: '收藏成功',
+            icon: 'success'
+          })
+        },
+        fail: function() {
+          wx.showToast({
+            title: '收藏失败',
+            icon: 'fail'
+          })
+        }
+      })
       return;
     }
     wx.navigateTo({
       url: '../detail/detail?jsonStr=' + JSON.stringify(event.currentTarget.dataset.item),
-      success: function (res) {
+      success: function(res) {
         // success
         console.log("nihao////1")
       },
-      fail: function () {
+      fail: function() {
         // fail
         console.log("nihao////2")
       },
-      complete: function () {
+      complete: function() {
         // complete
         console.log("nihao////3")
       }
@@ -240,8 +289,8 @@ Page({
         if (that.data.resultdata3.length > 0) {
           return;
         }
-      } 
-      this.refreshData(that, pageNo+1,1);
+      }
+      this.refreshData(that, pageNo + 1, 1);
     }
   },
   /**
@@ -285,7 +334,7 @@ Page({
   onReachBottom: function() {
 
   },
-  bindDownLoad: function () {
+  bindDownLoad: function() {
     //  该方法绑定了页面滑动到底部的事件  
     var that = this;
     var nowPage = that.data.currentTab;
@@ -300,15 +349,15 @@ Page({
     } else if (type == 4) {
       pageN = that.data.pageNum3;
     }
-    
-    that.refreshData(that, nowPage + 1, pageN+1);
+
+    that.refreshData(that, nowPage + 1, pageN + 1);
   },
-  refresh: function (event) {
+  refresh: function(event) {
     //  该方法绑定了页面滑动到顶部的事件，然后做上拉刷新  
     var that = this;
     var nowPage = that.data.currentTab;
     that.refreshData(that, nowPage + 1, 1);
-  }, 
+  },
   /**
    * 用户点击右上角分享
    */

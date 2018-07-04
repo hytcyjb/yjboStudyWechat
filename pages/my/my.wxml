@@ -1,21 +1,12 @@
 <!--detail.wxml-->
 <import src="../../utils/template.wxml" />
-<view class="container listview" wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
-   <template  is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video_detail' : 'recommend'))}}" data="{{...item}}"></template>
+<view class=" listview" wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
+  <view bindtap="bindViewTap" data-item='{{item}}'>
+    <template is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'joy-pic'))}}" data="{{...item}}"></template>
+  </view>
 </view>
-
-
-
-<!--my.wxml-->
-<!-- <import src="../../utils/template.wxml" />
-<view class="container listview">
-  <block wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
-    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-      <view class='listview' wx:for="{{resultdata}}" wx:for-item="item" wx:key="*this">
-        <view bindtap="bindViewTap" data-item='{{item}}'>
-          <template is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'recommend'))}}" data="{{...item}}"></template>
-        </view>
-      </view>
-    </scroll-view>
-  </block>
-</view> -->
+<text hidden="{{collects.length == 0 ? false : true}}" >
+您可以查看首页:笑话列表==》笑话详情  点击收藏，即刻就可在此显示哦！！<br/>
+感谢：有梦想的程序丶猿   
+    提供的免费开放接口API  具体地址为： https://www.jianshu.com/p/e6f072839282
+</text>

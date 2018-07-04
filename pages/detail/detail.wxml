@@ -1,5 +1,5 @@
 <!--detail.wxml-->
 <import src="../../utils/template.wxml" />
-<view class="container listview">
-   <template  is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video_detail' : 'recommend'))}}" data="{{...item}}"></template>
+<view class=" listview">
+   <template  is="{{item.type == 29 ? 'joy-text_detail' : (item.type == 10 ? 'joy-pic_detail' : (item.type == 41 ? 'joy-video_detail' : 'joy-pic_detail'))}}" data="{{item}}"></template>
 </view>

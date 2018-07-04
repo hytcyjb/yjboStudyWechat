@@ -31,5 +31,8 @@
         "selectedIconPath": "pic/wechatHL.png"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 20000
   }
 }

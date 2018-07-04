@@ -22,7 +22,29 @@ Page({
   console.log("我显示了")
   this.requesLocalData();
   },
+  bindViewTap: function (event) {
+    // console.log("nihao////" + event.currentTarget.dataset.item)
+    var item = event.currentTarget.dataset.item;
+    // if (item.type == "10") {
+    //   templates.previewImg(event);
+    //   return;
+    // } else if (item.type == "29") {
+    //   // templates.bindCollect(event);
+    // }
+    wx.navigateTo({
+      url: '../detail/detail?jsonStr=' + JSON.stringify(event.currentTarget.dataset.item),
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
 
+    })
+  },
   requesLocalData:function(){
     var list = [];
     // var itemOne = {};

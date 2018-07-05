@@ -4,18 +4,20 @@
 ### 在此特别感谢：  `有梦想的程序丶猿`   提供的免费开放接口API 
 ### （其博客地址：[https://www.jianshu.com/p/e6f072839282](https://www.jianshu.com/p/e6f072839282)）  
 
- ![这里写图片描述](https://img-blog.csdn.net/20180706001833416?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
-
 
 ## 本次发版主要实现功能如下：（2018年7月5日发布）
  （搭建小程序的开发环境等内容请参考：https://developers.weixin.qq.com/miniprogram/dev/index.html）
+## [该小程序github源码地址](https://github.com/hytcyjb/yjboStudyWechat)（喜欢就给个star呗）
+ ![这里写图片描述](https://github.com/hytcyjb/111/blob/master/shotscreen/icon.jpg?raw=true)
+ ![这里写图片描述](https://github.com/hytcyjb/111/blob/master/shotscreen/icon.jpg?raw=true)
 ## 效果图如下
-<div><img src="https://img-blog.csdn.net/20180706002641589?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width = "300" height = "570"  />
-<img src="https://img-blog.csdn.net/20180706002657870?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width = "300" height = "570"  margin-left="18" /></div>
-<br/>
-<div><img src="https://img-blog.csdn.net/20180706002705214?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width = "300" height = "570"  />
-<img src="https://img-blog.csdn.net/20180706002711899?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width = "300" height = "570"  /></div>
+<p><img src="https://github.com/hytcyjb/111/blob/master/shotscreen/v0_0_328.gif?raw=true" width="300" height="570"></p>
+ <p><img src="https://github.com/hytcyjb/111/blob/master/shotscreen/Screenshot_2018-07-05-23-14-11-529.png?raw=true" width="300" height="570">
+<img src="https://github.com/hytcyjb/111/blob/master/shotscreen/Screenshot_2018-07-05-23-14-17-030.png?raw=true" width="300" height="570">
+ <img src="https://github.com/hytcyjb/111/blob/master/shotscreen/Screenshot_2018-07-05-23-14-44-060.png?raw=true" width="300" height="570">
+<img src="https://github.com/hytcyjb/111/blob/master/shotscreen/Screenshot_2018-07-05-23-15-01-278.png?raw=true" width="300" height="570"></p>
+
+
 #### 1.实现底部的2个tab显示：（首页，我的页面）
 ```
 在app.json内配置如下代码，即可实现底部的tab；
@@ -41,7 +43,7 @@
   },
 ```
 #### 2.实现顶部的4个页签的显示以及滑动；
-``` 
+```
 <view class="swiper-tab">
 <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">推荐</view>
   <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">纯文字</view>
@@ -75,14 +77,14 @@ bindscrolltolower="bindDownLoad"  bindscrolltoupper="refresh"
   (item.type == '41' ? 'joy-video' : 'joy-pic'))}}" data="{{...item}}"></template>
 ```
 #### 5.实现数据的本地收藏和取消收藏功能；
-···
+```
   wx.setStorage({
         key: "collects", //以用户id和用户创建该数据的时间作为唯一的key
         data: JSON.stringify(itemArr),
         success: function() {}
         })
  //收藏和取消收藏使用了一个key，收藏时将数组添加一个元素；取消收藏时将数组减去该元素；
-···
+```
 #### 6.实现页面的跳转功能，转发功能；
 ```
 //实现跳转页面功能
@@ -148,8 +150,8 @@ bindscrolltolower="bindDownLoad"  bindscrolltoupper="refresh"
 ```
 
 ## [该小程序github源码地址](https://github.com/hytcyjb/yjboStudyWechat)（喜欢就给个star呗）
- ![这里写图片描述](https://img-blog.csdn.net/20180706001833416?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdqaWFuYm80NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
+ ![这里写图片描述](https://github.com/hytcyjb/111/blob/master/shotscreen/icon.jpg?raw=true)
+ ![这里写图片描述](https://github.com/hytcyjb/111/blob/master/shotscreen/icon.jpg?raw=true)
 
 ## `规划：第二版v0.0.388主要实现功能如下（预计2018年7月13日发布）`
 #### `1.新增我的页面：将之前我的页面名称改为收藏页面；新我的页面包含功能如下：`

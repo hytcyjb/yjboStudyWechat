@@ -1,8 +1,8 @@
 <!--detail.wxml-->
 <import src="../../utils/template.wxml" />
 <view class=" listview" wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
-  <view bindtap="bindViewTap" data-item='{{item}}'>
-    <template is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'joy-pic'))}}" data="{{...item}}"></template>
+  <view >
+    <template is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'joy-pic'))}}" data="{{item}}"></template>
   </view>
 </view>
 <text hidden="{{collects.length == 0 ? false : true}}" >

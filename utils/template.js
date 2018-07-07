@@ -19,7 +19,7 @@ var temp = {
       fail: function (res) { },
       complete: function (res) { },
     })
-  }
+  },
 }
 
 //导出，供外部使用

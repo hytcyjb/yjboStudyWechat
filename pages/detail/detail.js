@@ -178,6 +178,20 @@ Page({
   onReachBottom: function() {
 
   },
-
+  /**
+    * 用户点击右上角分享
+    */
+  onShareAppMessage: function () {
+    wx.showToast({
+      title: '你好',
+      icon: '',
+      image: '',
+      duration: 0,
+      mask: true,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  }
 
 })

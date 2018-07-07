@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "娱乐休闲《看看》"
+  "navigationBarTitleText": "娱乐休闲《看看》",
+  "navigationBarBackgroundColor": "#303030",
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white"
 }

@@ -61,6 +61,65 @@ Page({
 
     this.refreshData(that, 1, 1);
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    var that = this;
+    var nowPage = that.data.currentTab;
+    var type = nowPage + 1;
+    var dataOld = [];
+    if (type == 1) {
+       dataOld = that.data.resultdata;
+    } else if (type == 2) {
+      dataOld = that.data.resultdata1;
+    } else if (type == 3) {
+      dataOld = that.data.resultdata2;
+    } else if (type == 4) {
+      dataOld = that.data.resultdata3;
+    }
+    if (dataOld && dataOld.length > 0){//列表没有数据时不刷新页面
+      var value = wx.getStorageSync('collects');
+      var itemArr = [];
+      for (var i = 0; i < dataOld.length; i++) {
+        var item = dataOld[i];
+        var isCollectFlag = "";
+        if (value) {
+          itemArr = JSON.parse(value);
+          for (var k = 0; k < itemArr.length; k++) {
+            var itemOne = itemArr[k];
+            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+              isCollectFlag = "1"
+            }
+          }
+        } else { //不处理
+        }
+        if (isCollectFlag == "1") {
+          item.isCollect = true;
+        } else {
+          item.isCollect = false;
+        }
+      }
+      if (type == 1) {
+        that.setData({
+          resultdata: dataOld,
+        });
+      } else if (type == 2) {
+        that.setData({
+          resultdata1: dataOld,
+        });
+      } else if (type == 3) {
+        that.setData({
+          resultdata2: dataOld,
+        });
+      } else if (type == 4) {
+        that.setData({
+          resultdata3: dataOld,
+        });
+      }
+    }
+  },
   /**
    * 请求网络数据
    */
@@ -89,7 +148,6 @@ Page({
         console.log(res.data.code);
         console.log(res.data);
         if (res.data.code == 200) {
-          var height = 100;
           var dataNew = res.data.data;
           if (type == 1) {
             var dataOld = that.data.resultdata;
@@ -242,7 +300,6 @@ Page({
               // winHeight: res.data.data.length * height
             });
           }
-
         }
       },
       fail: function() {
@@ -253,6 +310,12 @@ Page({
       }
 
     });
+  },
+  /**
+   * 将返回值和本地收藏进行组合
+   */
+  compareDataStore: function(that, type, dataNew) {
+
   },
   bindViewTap: function(event) {
     // console.log("nihao////" + event.currentTarget.dataset.item)
@@ -343,7 +406,7 @@ Page({
               var itemOne = itemRequestArr[k];
               if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
                 itemOne.isCollect = false;
-                that.changePageData(that, pageNo,itemRequestArr);
+                that.changePageData(that, pageNo, itemRequestArr);
                 break;
               }
             }
@@ -386,7 +449,7 @@ Page({
    * pageNo 当前所在页面
    * itemRequestArr 封装网络数据修改值
    */
-  changePageData: function (that, pageNo, itemRequestArr){
+  changePageData: function(that, pageNo, itemRequestArr) {
     if (pageNo === 0) {
       that.setData({
         resultdata: itemRequestArr
@@ -409,23 +472,23 @@ Page({
   bindvideo_play: function(event) {
     this.bindViewTap(event);
   },
-   //详情功能
-  bindvideo_detail: function (event) {
+  //详情功能
+  bindvideo_detail: function(event) {
     this.bindViewTap(event);
   },
   //点击图片大图功能
-  bindpic_play: function (e) {
+  bindpic_play: function(e) {
     var item = e.currentTarget.dataset.item;
     console.log(item.image0);
     var picsrc = item.image0;
     var imgArr = [];
     imgArr.push(picsrc);
     wx.previewImage({
-      current: imgArr[0],     //当前图片地址
-      urls: imgArr,               //所有要预览的图片的地址集合 数组形式
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      current: imgArr[0], //当前图片地址
+      urls: imgArr, //所有要预览的图片的地址集合 数组形式
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
   swichNav: function(e) {
@@ -484,13 +547,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
 
   },
 

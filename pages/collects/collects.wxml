@@ -1,0 +1,10 @@
+<!--collects.wxml-->
+<import src="../../utils/template.wxml" />
+<view class=" listview" wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
+  <view >
+    <template is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'joy-pic'))}}" data="{{item}}"></template>
+  </view>
+</view>
+<text hidden="{{collects.length == 0 ? false : true}}" >
+您可以查看首页:笑话列表==》笑话详情  点击收藏，即刻就可在此显示哦！！<br/>
+</text>

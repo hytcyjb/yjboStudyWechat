@@ -58,6 +58,7 @@ Page({
     }
   },
   setIsCollect: function (that,item) {
+    item.isCollect = true;
     var itemArr = [];
     var collectFlag = ""; //"":默认状态；"1":收藏成功状态；"0":取消收藏成功状态；
     try {

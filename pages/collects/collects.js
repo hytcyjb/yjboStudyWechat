@@ -1,41 +1,17 @@
-//my.js
-// import '../../utils/util.js';
+//collects.js
 var util = require('../../utils/util.js')
-//获取应用实例
-var app = getApp()
 Page({
   data: {
     collects: [],
+    mhiden:true
     // item2:{}
-    // cacheRes:{},
-    cacheNumStr: "0 KB",
-    height: 500
   },
   onLoad: function() {
-    var that = this;
-    var mheight = 500;
-    wx.getSystemInfo({
-      success: function (res) {
-        mheight = res.windowHeight;
-      }
-    })
     wx.getStorageInfo({
       success: function(res) {
         console.log(res.keys) //当前storage中所有的key
         console.log(res.currentSize) //当前占用的空间大小, 单位kb
         console.log(res.limitSize) //限制的空间大小，单位kb
-        var cacheData = res.currentSize;
-        var cacheStr = "0 KB";
-        if(cacheData >= 1024){
-          cacheStr = (cacheData / 1024).toFixed(2)+" MB";
-        }else{
-          cacheStr = cacheData + " KB";
-        }
-        that.setData({
-          // cacheRes:res
-          cacheNumStr: cacheStr,
-          height: mheight
-        });
       }
     })
   },
@@ -91,6 +67,7 @@ Page({
     }
     this.setData({
       collects: list,
+      mhiden: (list.length > 0 ? true :false)
       // item2:item
     })
   },
@@ -150,22 +127,21 @@ Page({
               duration: 2000,
               success:function(){
                 that.setData({
-                  collects: itemArr
+                  collects: itemArr,
+                  mhiden: (itemArr.length > 0 ? true : false)
                 });
               }
             })
 
           } else if (collectFlag == "1") {
-            that.setData({
-              collects: itemArr
-            });
             wx.showToast({
               title: '收藏成功',
               icon: 'success',
               duration: 2000,
-              fail: function () {
+              success: function () {
                 that.setData({
-                  collects: itemArr
+                  collects: itemArr,
+                  mhiden: (itemArr.length > 0 ? true : false)
                 });
               }
             })
@@ -202,71 +178,6 @@ Page({
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },
-    })
-  },
-  cleancache:function(){
-    var that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确定清除缓存数据',
-      success: function (res) {
-        if (res.confirm) {
-          wx.removeStorage({
-            key: 'logs',
-            success: function (res) {
-              console.log(res.data)
-            }
-          }),
-          wx.removeStorage({
-            key: 'collects',
-            success: function (res) {
-              console.log(res.data)
-              that.setData({
-                // cacheRes: {},
-                cacheNumStr: "0 KB"
-              });
-              wx.showToast({
-                title: '缓存清除成功',
-                icon: 'success',
-                duration: 2000
-              })
-            }
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-  },
-  mycollect:function(){
-    console.log('收藏---')
-    // wx.navigateTo({
-    wx.switchTab({
-      url: '../collects/collects',
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  },
-  clickabout: function () {
-    wx.navigateTo({
-      url: '../about/about?title=' + "关于·感谢&content=" + "感谢：有梦想的程序丶猿"+ 
-    "提供的免费开放接口API;\n具体地址为： https://www.jianshu.com/p/e6f072839282",
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
     })
   },
   /**

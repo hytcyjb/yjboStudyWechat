@@ -1,0 +1,21 @@
+/* collects.wxss */
+.listview {
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.item {
+  justify-content: left;
+  text-align: left;
+  font-size: 15px;
+}
+.split-line {
+  height: 10px;
+}
+.split-line-text {
+  background: #ebebeb ;
+  height: 1px;
+  margin-top: 7px;
+}
+
+

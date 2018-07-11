@@ -1,12 +1,60 @@
-<!--detail.wxml-->
-<import src="../../utils/template.wxml" />
-<view class=" listview" wx:for="{{collects}}" wx:for-item="item" wx:key="*this">
-  <view >
-    <template is="{{item.type == 29 ? 'joy-text' : (item.type == 10 ? 'joy-pic' : (item.type == 41 ? 'joy-video' : 'joy-pic'))}}" data="{{item}}"></template>
+<!--my.wxml-->
+<view style='background-color:#ebebeb;width:100%;height:{{height}}px;'>
+  <view>
+    <view style='width:100%;flex-direction:row; display:flex;float:left;background-color:#fff;margin-top:15px;padding-top:7px;padding-bottom:7px;'>
+      <view style='width:70px;height:70px;padding-left:15px;'>
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view style='margin-left:10px;color:#000;font-size: 20px;line-height:70px;text-align:center;height:70px;'>
+        <open-data type="userNickName"></open-data>
+      </view>
+    </view>
+  </view>
+  <!-- 我的收藏 -->
+   <view  bindtap="mycollect" style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
+    <view style='align-items:center;height:20px;'>
+      <image style='width:20px;height:20px;padding-left:25px;' src='../../pic/my_collect.png'></image>
+    </view>
+    <view>
+      <text style='padding-left:15px;color:#000;font-size: 16px;'>我的收藏</text>
+    </view>
+  </view>
+  <!-- 缓存大小 -->
+  <view style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
+    <view style='align-items:center;height:20px;'>
+      <image style='width:20px;height:20px;padding-left:25px;' src='../../pic/my_cache.png'></image>
+    </view>
+    <view>
+      <text style='padding-left:15px;color:#000;font-size: 16px;'>缓存大小</text>
+    </view>
+    <view style='flex:1;height:20px;padding-right:15px;'>
+      <text style='float: right;color:#cbcbcb;font-size: 14px;'>{{cacheNumStr}}</text>
+    </view>
+  </view>
+  <!-- 清除缓存 -->
+   <view style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
+    <view style='align-items:center;height:20px;'>
+      <image style='width:20px;height:20px;padding-left:25px;' src='../../pic/my_clean_cache.png'></image>
+    </view>
+    <view>
+      <text style='padding-left:15px;color:#000;font-size: 16px;'>清空缓存</text>
+    </view>
+    <view style='flex:1;height:20px;padding-right:15px;'>
+      <text bindtap="cleancache" style='float: right;color:#cbcbcb;font-size: 14px;'>点击可清除</text>
+    </view>
+  </view>
+  <!-- 关于 -->
+   <view bindtap="clickabout" style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
+    <view style='align-items:center;height:20px;'>
+      <image style='width:20px;height:20px;padding-left:25px;' src='../../pic/my_about.png'></image>
+    </view>
+    <view>
+      <text style='padding-left:15px;color:#000;font-size: 16px;'>关于</text>
+    </view>
   </view>
 </view>
-<text hidden="{{collects.length == 0 ? false : true}}" >
+<!-- <text hidden="{{collects.length == 0 ? false : true}}" >
 您可以查看首页:笑话列表==》笑话详情  点击收藏，即刻就可在此显示哦！！<br/>
 感谢：有梦想的程序丶猿   
     提供的免费开放接口API  具体地址为： https://www.jianshu.com/p/e6f072839282
-</text>
+</text> -->

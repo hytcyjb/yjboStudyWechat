@@ -77,6 +77,7 @@
     </view>
     <view class='split-line'></view>
     <view style='margin-left:10px;margin-right:10px;'>
+      <!-- <image bindtap="bindvideo_play" data-item='{{item}}' style='width: 25px; height: 25px;background-color:#ff5;' src="'../../pic/video_flag.png'"></image> -->
       <image bindtap="bindvideo_play" data-item='{{item}}' data-index='{{index}}' mode="aspectFill" style='height:200px;width:100%;background-color: #eeeeee;align-items:center;' src='{{item.image0}}'></image>
     </view>
     <view class='split-line-text'></view>

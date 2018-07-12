@@ -3,7 +3,6 @@
   padding-top: 10rpx;
   padding-bottom: 10rpx;
 }
-
 .item {
   justify-content: left;
   text-align: left;

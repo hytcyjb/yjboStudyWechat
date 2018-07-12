@@ -9,7 +9,7 @@
 
 <swiper current="{{currentTab}}" class="swiper" duration="300" style="height:{{winHeight}}px" bindchange="bindChange">
   <swiper-item>
-    <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
+     <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh"> 
       <view class='listview' wx:for="{{resultdata}}" wx:for-item="item" wx:key="*this">
       <!-- bindtap="bindViewTap" data-item='{{item}}' -->
       <!-- template内不使用data="{{...item}}是因为在template内点击事件里面需要用到item，所以不能使用 -->
@@ -17,7 +17,7 @@
          <template  is="{{item.type == '29' ? 'joy-text' : (item.type == '10' ? 'joy-pic' : (item.type == '41' ? 'joy-video' : 'joy-pic'))}}" data="{{item}}"></template>
       </view>
       </view>
-    </scroll-view>
+     </scroll-view> 
   </swiper-item>
    <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{winHeight}}px" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">

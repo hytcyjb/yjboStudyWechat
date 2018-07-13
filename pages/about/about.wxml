@@ -1,6 +1,6 @@
 <!--my.wxml-->
-<view style='background-color:#fff;width:100%;height:100%;'>
+<scroll-view style='background-color:#fff;width:100%;height:100%;padding-bottom:50px;'>
   <view style='margin-left:15px;margin-right:15px;margin-top:20px;'>
     <text selectable="true" style='color:#000;font-size: 16px;'>{{content}}</text>
   </view>
-</view>
+</scroll-view>

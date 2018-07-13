@@ -43,6 +43,18 @@
       <text bindtap="cleancache" style='float: right;color:#cbcbcb;font-size: 14px;'>点击可清除</text>
     </view>
   </view>
+   <!-- 版本信息 -->
+   <view style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
+    <view style='align-items:center;height:20px;'>
+      <image style='width:20px;height:20px;padding-left:25px;' src='../../pic/my_version.png'></image>
+    </view>
+    <view>
+      <text style='padding-left:15px;color:#000;font-size: 16px;'>版本信息</text>
+    </view>
+    <view style='flex:1;height:20px;padding-right:15px;'>
+      <text bindtap="clickVersion" style='float: right;color:#cbcbcb;font-size: 14px;'>v0.0.388</text>
+    </view>
+  </view>
   <!-- 关于 -->
    <view bindtap="clickabout" style='width:100%;flex-direction:row; display:flex;float:left;flex:1;background-color:#fff;margin-top:15px;padding-top:10px;padding-bottom:10px;'>
     <view style='align-items:center;height:20px;'>

@@ -40,7 +40,7 @@ Page({
     //   icon: 'loading'
     // })
     //https://www.jianshu.com/p/e6f072839282
-    // type = 1 : 全部
+    // type = 1 : 全部 --- 改为动图
     // type = 2 : 文字
     // type = 3 : 图片
     // type = 4 : 视频
@@ -89,7 +89,7 @@ Page({
           itemArr = JSON.parse(value);
           for (var k = 0; k < itemArr.length; k++) {
             var itemOne = itemArr[k];
-            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+            if ((itemOne.sid) == (item.sid)) {
               isCollectFlag = "1"
             }
           }
@@ -131,9 +131,19 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    console.log("当前请求的url：" + 'https://www.apiopen.top/satinApi?type=' + type + '&page=' + pageN)
+    console.log("类型",type);
+    var typeStr = "text";
+    if (type == 1) {
+      typeStr = "gif";
+    } else if (type == 2) {
+      typeStr = "text";
+    }  else if (type == 3) {
+      typeStr = "image";
+    }  else if (type == 4) {
+      typeStr = "video";//gif
+    }
     wx.request({
-      url: 'https://www.apiopen.top/satinApi?type=' + type + '&page=1',
+      url: 'https://api.apiopen.top/getJoke?type=' + typeStr + '&page='+pageN+'&count=20',
       data: {
         // x: '',
         //   y: ''
@@ -148,7 +158,18 @@ Page({
         console.log(res.data.code);
         console.log(res.data);
         if (res.data.code == 200) {
-          var dataNew = res.data.data;
+          var dataNew = res.data.result;
+          //为了方便以后快速更换免费接口 2020年05月28日
+          if (dataNew) {
+            for (let k = 0; k < dataNew.length; k++) {
+              const element = dataNew[k];
+              element.profile_image = element.header;
+              element.type = element.type == "text" ? '29' : element.type == "image" ? '10' :
+                              element.type == "gif" ? '10' : element.type == "video" ? '41' : 10;
+              element.image0 = element.type == '41' ? element.thumbnail : element.images;//视频缩略图 //图片
+              element.videouri = element.video;
+            }
+          }
           if (type == 1) {
             var dataOld = that.data.resultdata;
             if (dataOld && dataOld.length > 0) {
@@ -170,7 +191,7 @@ Page({
                 itemArr = JSON.parse(value);
                 for (var k = 0; k < itemArr.length; k++) {
                   var itemOne = itemArr[k];
-                  if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+                  if ((itemOne.sid) == (item.sid)) {
                     isCollectFlag = "1"
                   }
                 }
@@ -208,7 +229,7 @@ Page({
                 itemArr = JSON.parse(value);
                 for (var k = 0; k < itemArr.length; k++) {
                   var itemOne = itemArr[k];
-                  if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+                  if ((itemOne.sid) == (item.sid)) {
                     isCollectFlag = "1"
                   }
                 }
@@ -246,7 +267,7 @@ Page({
                 itemArr = JSON.parse(value);
                 for (var k = 0; k < itemArr.length; k++) {
                   var itemOne = itemArr[k];
-                  if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+                  if ((itemOne.sid) == (item.sid)) {
                     isCollectFlag = "1"
                   }
                 }
@@ -283,7 +304,7 @@ Page({
                 itemArr = JSON.parse(value);
                 for (var k = 0; k < itemArr.length; k++) {
                   var itemOne = itemArr[k];
-                  if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+                  if ((itemOne.sid) == (item.sid)) {
                     isCollectFlag = "1"
                   }
                 }
@@ -363,7 +384,7 @@ Page({
         if (itemArr && itemArr.length > 0) {
           for (var i = 0; i < itemArr.length; i++) {
             var itemOne = itemArr[i];
-            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+            if ((itemOne.sid) == (item.sid)) {
               // 取消收藏。
               itemArr.splice(i, 1);
               collectFlag = "0";
@@ -404,7 +425,7 @@ Page({
             // });
             for (var k = 0; k < itemRequestArr.length; k++) {
               var itemOne = itemRequestArr[k];
-              if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+              if ((itemOne.sid) == (item.sid)) {
                 itemOne.isCollect = false;
                 that.changePageData(that, pageNo, itemRequestArr);
                 break;
@@ -421,7 +442,7 @@ Page({
             // });
             for (var k = 0; k < itemRequestArr.length; k++) {
               var itemOne = itemRequestArr[k];
-              if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+              if ((itemOne.sid) == (item.sid)) {
                 itemOne.isCollect = true;
                 that.changePageData(that, pageNo, itemRequestArr);
                 break;

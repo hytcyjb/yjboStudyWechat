@@ -42,5 +42,6 @@
   },
   "networkTimeout": {
     "request": 20000
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

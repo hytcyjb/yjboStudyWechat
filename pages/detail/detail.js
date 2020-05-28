@@ -37,7 +37,7 @@ Page({
         if (itemArr && itemArr.length > 0) {
           for (var i = 0; i < itemArr.length; i++) {
             var itemOne = itemArr[i];
-            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+            if ((itemOne.sid) == (item.sid)) {
               collectFlag = "1";
               break;
             }
@@ -69,7 +69,7 @@ Page({
         if (itemArr && itemArr.length > 0) {
           for (var i = 0; i < itemArr.length; i++) {
             var itemOne = itemArr[i];
-            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+            if ((itemOne.sid) == (item.sid)) {
               // 取消收藏。
               itemArr.splice(i, 1);
               collectFlag = "0";

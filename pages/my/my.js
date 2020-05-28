@@ -107,7 +107,7 @@ Page({
         if (itemArr && itemArr.length > 0) {
           for (var i = 0; i < itemArr.length; i++) {
             var itemOne = itemArr[i];
-            if ((itemOne.user_id + itemOne.t) == (item.user_id + item.t)) {
+            if ((itemOne.sid) == (item.sid)) {
               // 取消收藏。
               itemArr.splice(i, 1);
               collectFlag = "0";
@@ -256,13 +256,14 @@ Page({
   },
   clickabout: function () {
     wx.navigateTo({
-      url: '../about/about?title=' + "关于·感谢&content=" + "感谢：有梦想的程序丶猿"+ 
-      "提供的免费开放接口API;\n具体地址为： https://www.jianshu.com/p/e6f072839282" +"\n\n"
-      + "声明：\n"
-      + "本次版本不支持视频播放（下次版本争取添加上），微信说明如下：\n"
-      + "你的小程序“娱乐休闲看看”代码发布审核未通过，原因如下：\n"
-      + "1: 服务类目“工具-图片/音频/视频_”与你提交代码审核时设置的功能页面内容不一致:\n"
-      + "(1):小程序服务提供的内容涉及在线观看视频，属个人未开放类目，建议选择企业主体小程序。\n",
+      url: '../about/about?title=' + "关于·感谢&content=" + "感谢： 尔嵘  "+ 
+      "提供的免费开放接口API;\n具体地址为： https://blog.csdn.net/XU441520\n/article/details/102940767" +"\n\n"
+      // + "声明：\n"
+      // + "本次版本不支持视频播放（下次版本争取添加上），微信说明如下：\n"
+      // + "你的小程序“娱乐休闲看看”代码发布审核未通过，原因如下：\n"
+      // + "1: 服务类目“工具-图片/音频/视频_”与你提交代码审核时设置的功能页面内容不一致:\n"
+      // + "(1):小程序服务提供的内容涉及在线观看视频，属个人未开放类目，建议选择企业主体小程序。\n"
+      ,
       success: function (res) {
         // success
       },
@@ -280,7 +281,7 @@ Page({
   clickVersion: function () {
     wx.navigateTo({
       url: "../about/about?title=版本信息&content=" 
-      + "当前版本：v0.0.388\n\n"
+      + "当前版本：v0.0.400\n\n"
       + "历次版本信息：\n\n"
       + "· v0.0.388版本（2018年7月12日发布）\n\n"
       + "本次版本更新内容如下：\n"

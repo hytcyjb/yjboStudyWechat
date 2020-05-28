@@ -153,8 +153,8 @@
     </view>
     <text selectable="true" class="item">{{item.text}}</text>
     <view class='split-line-text'></view>
-      <image  bindtap='previewImg' data-item='{{item}}' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;align-items:center;' src='{{item.image0}}'></image>  
-     <!-- <video style='height:200px;width:100%;background-color: #eeeeee;align-items:center;' src='{{item.videouri}}' loop='true' autoplay='true'></video>  -->
+      <!-- <image  bindtap='previewImg' data-item='{{item}}' mode="aspectFill" style='height:200px,width:100%,background-color: #eeeeee;align-items:center;' src='{{item.image0}}'></image>   -->
+     <video style='height:200px;width:100%;background-color: #eeeeee;align-items:center;' src='{{item.videouri}}' loop='true' autoplay='true'></video> 
     <view class='split-line' hidden='true'></view>
     <!-- <image style='width: 20px; height: 20px;  float: top; padding-right:15px;' src="../../pic/video_flag.png"></image> -->
   </view>
